@@ -31,6 +31,9 @@ namespace ExpressTaxi.Infrastructure
                 TaxiUser user = new TaxiUser();
                 user.UserName = "admin";
                 user.Email = "admin@admin.com";
+                user.FirstName = "Admin";
+                user.LastName = "Adminov";
+                user.PhoneNumber = "0888888888";
                 var result = await userManager.CreateAsync(user, "123!@#qweQWE");
 
                 if(result.Succeeded)

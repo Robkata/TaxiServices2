@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using ExpressTaxi.Models;
 
 namespace ExpressTaxi.Data
 {
@@ -14,5 +15,6 @@ namespace ExpressTaxi.Data
         {
             this.Database.EnsureCreated();
         }
+        public DbSet<ExpressTaxi.Models.ClientBindingAllViewModel> ClientBindingAllViewModel { get; set; }
     }
 }
