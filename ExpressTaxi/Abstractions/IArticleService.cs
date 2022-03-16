@@ -8,10 +8,11 @@ namespace ExpressTaxi.Abstractions
 {
     public interface IArticleService
     {
-        bool Create(string article, string author, string picture, DateTime dateTime);
+        bool Create(string articleName, string author, string picture, DateTime dateTime);
         bool UpdateArticle(int articleId, string article, string picture);
         List<Article> GetArticles();
         Article GetArticleById(int articleId);
         bool RemoveById(int articleId);
+        List<Article> GetArticles(string searchStringArticle, string searchStringAuthor);
     }
 }

@@ -12,7 +12,7 @@ namespace ExpressTaxi.Models
 
         [Required]
         [Range(50, 200, ErrorMessage = "Статията трябва да е дълга между 50 и 200 символа!")]
-        public string Article { get; set; }
+        public string ArticleName { get; set; }
 
         [Required]
         [MaxLength(30)]

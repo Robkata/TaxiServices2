@@ -35,7 +35,7 @@ namespace ExpressTaxi.Controllers
         {
             if (ModelState.IsValid)
             {
-                var created = _articleService.Create(bindingModel.Article, bindingModel.Author, bindingModel.Picture, bindingModel.DateTime);
+                var created = _articleService.Create(bindingModel.ArticleName, bindingModel.Author, bindingModel.Picture, bindingModel.DateTime);
                 if (created)
                 {
                     return this.RedirectToAction("Success");
@@ -52,7 +52,7 @@ namespace ExpressTaxi.Controllers
                 .Select(articleFromDb => new ArticleAllViewModel
                 {
                     Id = articleFromDb.Id,
-                    Article = articleFromDb.Article,
+                    ArticleName = articleFromDb.ArticleName,
                     Author = articleFromDb.Author,
                     Picture = articleFromDb.Picture,
                     DateTime = articleFromDb.DateTime

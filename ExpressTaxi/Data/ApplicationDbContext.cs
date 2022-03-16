@@ -15,8 +15,9 @@ namespace ExpressTaxi.Data
         {
             this.Database.EnsureCreated();
         }
-        public DbSet<ExpressTaxi.Models.ClientBindingAllViewModel> ClientBindingAllViewModel { get; set; }
+       // public DbSet<ExpressTaxi.Models.ClientBindingAllViewModel> ClientBindingAllViewModel { get; set; }
         //public DbSet<ExpressTaxi.Models.AdminAllViewModel> AdminAllViewModel { get; set; }
-        public DbSet<ExpressTaxi.Models.ArticleCreateViewModel> ArticleCreateViewModel { get; set; }
+        //public DbSet<ExpressTaxi.Models.ArticleCreateViewModel> ArticleCreateViewModel { get; set; }
+        public DbSet<Article> Articles { get; set; }
     }
 }
