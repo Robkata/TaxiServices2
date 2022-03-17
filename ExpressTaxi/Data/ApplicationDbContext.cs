@@ -19,5 +19,8 @@ namespace ExpressTaxi.Data
         //public DbSet<ExpressTaxi.Models.AdminAllViewModel> AdminAllViewModel { get; set; }
         //public DbSet<ExpressTaxi.Models.ArticleCreateViewModel> ArticleCreateViewModel { get; set; }
         public DbSet<Article> Articles { get; set; }
+        public DbSet<Taxi> Taxies { get; set; }
+        public DbSet<Driver> Drivers { get; set; }
+        public DbSet<Brand> Brands { get; set; }
     }
 }
