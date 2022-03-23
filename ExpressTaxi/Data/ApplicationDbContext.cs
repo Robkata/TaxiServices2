@@ -22,5 +22,6 @@ namespace ExpressTaxi.Data
         public DbSet<Taxi> Taxies { get; set; }
         public DbSet<Driver> Drivers { get; set; }
         public DbSet<Brand> Brands { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
     }
 }

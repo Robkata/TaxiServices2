@@ -1,4 +1,5 @@
-﻿using ExpressTaxi.Domain;
+﻿using ExpressTaxi.Data;
+using ExpressTaxi.Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,7 +20,25 @@ namespace ExpressTaxi.Infrastructure
             await RoleSeeder(services);
             await SeedAdministrator(services);
 
+            var data = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+            SeedReservations(data);
+
             return app;
+        }
+
+        private static void SeedReservations(ApplicationDbContext data)
+        {
+            if (data.Reservations.Any())
+            {
+                return;
+            }
+            data.Reservations.AddRange(new[]
+            {
+                new Reservation { Name = "Англоговорящ шофьор"},
+                new Reservation { Name = "Плащане с карта" },
+                new Reservation { Name = "Много багаж" }
+            });
+            data.SaveChanges();
         }
 
         private static async Task SeedAdministrator(IServiceProvider serviceProvider)
@@ -34,6 +53,7 @@ namespace ExpressTaxi.Infrastructure
                 user.FirstName = "Admin";
                 user.LastName = "Adminov";
                 user.PhoneNumber = "0888888888";
+                user.Address = "Pernik";
                 var result = await userManager.CreateAsync(user, "123!@#qweQWE");
 
                 if(result.Succeeded)
