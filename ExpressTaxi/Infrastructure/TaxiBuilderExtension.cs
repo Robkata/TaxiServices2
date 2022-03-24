@@ -21,22 +21,22 @@ namespace ExpressTaxi.Infrastructure
             await SeedAdministrator(services);
 
             var data = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-            SeedReservations(data);
+            SeedOptions(data);
 
             return app;
         }
 
-        private static void SeedReservations(ApplicationDbContext data)
+        private static void SeedOptions(ApplicationDbContext data)
         {
             if (data.Reservations.Any())
             {
                 return;
             }
-            data.Reservations.AddRange(new[]
+            data.Options.AddRange(new[]
             {
-                new Reservation { Name = "Англоговорящ шофьор"},
-                new Reservation { Name = "Плащане с карта" },
-                new Reservation { Name = "Много багаж" }
+                new Option { Name = "Англоговорящ шофьор"},
+                new Option { Name = "Плащане с карта" },
+                new Option { Name = "Много багаж" }
             });
             data.SaveChanges();
         }

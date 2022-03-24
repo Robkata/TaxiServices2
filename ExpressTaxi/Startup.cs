@@ -1,6 +1,8 @@
+using ExpressTaxi.Abstractions;
 using ExpressTaxi.Data;
 using ExpressTaxi.Domain;
 using ExpressTaxi.Infrastructure;
+using ExpressTaxi.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,7 +32,7 @@ namespace ExpressTaxi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
+                options.UseLazyLoadingProxies().UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
@@ -39,6 +41,10 @@ namespace ExpressTaxi
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
             services.AddControllersWithViews();
+
+            services.AddTransient<IOptionService, OptionService>();
+            services.AddTransient<IArticleService, ArticleService>();
+            services.AddTransient<IReservationService, ReservationService>();
             services.AddRazorPages();
 
             services.Configure<IdentityOptions>(options =>
