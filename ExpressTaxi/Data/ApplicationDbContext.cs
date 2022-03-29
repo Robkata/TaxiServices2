@@ -24,5 +24,6 @@ namespace ExpressTaxi.Data
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Option> Options { get; set; }
+        public DbSet<ExpressTaxi.Models.TaxiCreateViewModel> TaxiCreateViewModel { get; set; }
     }
 }
